@@ -1,0 +1,26 @@
+PODS:
+  - ArsdkEngine (1.0.0):
+    - GroundSdk (= 1.0.0)
+  - GroundSdk (1.0.0):
+    - SdkCore (= 1.0.0)
+  - SdkCore (1.0.0)
+
+DEPENDENCIES:
+  - ArsdkEngine (= 1.0.0)
+  - GroundSdk (= 1.0.0)
+  - SdkCore (= 1.0.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - ArsdkEngine
+    - GroundSdk
+    - SdkCore
+
+SPEC CHECKSUMS:
+  ArsdkEngine: 1c6086cf87e1c9033e0e76d61b21a3edcb5f93b0
+  GroundSdk: 640eb77727d99a76ce1c731671b469753644ef0a
+  SdkCore: 8eee3daafba05239f9f5c7ebb7fa9ee3b816e518
+
+PODFILE CHECKSUM: dd8a6fb3194fb71a0801c7bf0a6445b9fabdc920
+
+COCOAPODS: 1.7.4
