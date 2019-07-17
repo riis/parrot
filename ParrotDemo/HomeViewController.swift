@@ -15,7 +15,8 @@ class HomeViewController: UITableViewController {
     private var droneListRef: Ref<[DroneListEntry]>!
     private var droneList: [DroneListEntry]?
     
-//    private var selectedUid: String?
+    private var drone: Drone?
+    private var stateRef: Ref<DeviceState>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,12 +48,46 @@ class HomeViewController: UITableViewController {
         return cell
     }
     
-//    ovecd rride func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if let droneEntry = self.droneList?[indexPath.row] {
-//            selectedUid = droneEntry.uid
-//            performSegue(withIdentifier: droneInfoSegue, sender: self)
-//        }
-//    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if let droneEntry = self.droneList?[indexPath.row] {
+            
+            drone = groundSdk.getDrone(uid: droneEntry.uid)
+            
+            if let drone = drone {
+                self.stateRef = drone.getState { [weak self] state in
+                    (self?.tableView.cellForRow(at: indexPath) as! DeviceCell).connectionState.text = state!.description
+                }
+            }
+            
+            if let connectionState = stateRef?.value?.connectionState {
+                if connectionState == DeviceState.ConnectionState.disconnected {
+                    if let drone = drone {
+                        connect(drone: drone, connector: drone.state.connectors[0])
+                    }
+                } else {
+                    _ = drone?.disconnect()
+                }
+            }
+        }
+    }
+    
+    private func connect(drone: Drone, connector: DeviceConnector) {
+        if drone.state.connectionStateCause == .badPassword {
+            // ask for password
+            let alert = UIAlertController(title: "Password", message: "", preferredStyle: .alert)
+            alert.addTextField(configurationHandler: nil)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                if let password = alert.textFields?[0].text {
+                    _ = drone.connect(connector: connector, password: password)
+                }
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            present(alert, animated: true, completion: nil)
+        } else {
+            _ = drone.connect(connector: connector)
+        }
+    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -61,15 +96,6 @@ class HomeViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return droneList?.count ?? 0
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == droneInfoSegue ||  segue.identifier == rcInfoSegue {
-//            if let viewController = segue.destination as? DeviceViewController,
-//                let selectedUid = selectedUid {
-//                viewController.setDeviceUid(selectedUid)
-//            }
-//        }
-//    }
 }
 
 
