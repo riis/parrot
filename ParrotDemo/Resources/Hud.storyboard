@@ -19,18 +19,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1a3-gz-6wH">
-                                <rect key="frame" x="429.5" y="98" width="37" height="30"/>
+                                <rect key="frame" x="64" y="45" width="37" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Done"/>
                                 <connections>
                                     <action selector="dismiss:" destination="brO-bU-IcO" eventType="touchUpInside" id="4TM-Oa-zFO"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MaW-bu-JX8">
-                                <rect key="frame" x="424" y="285" width="48" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="MaW-bu-JX8" secondAttribute="height" multiplier="1:1" id="Yq3-Cb-2wZ"/>
-                                </constraints>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MaW-bu-JX8">
+                                <rect key="frame" x="424" y="183" width="48" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="1" green="0.0" blue="0.01026766514" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <size key="titleShadowOffset" width="2.2250738585072014e-308" height="2.2250738585072014e-308"/>
                                 <state key="normal" image="ic_flight_takeoff_48pt"/>
@@ -42,9 +40,6 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="MaW-bu-JX8" firstAttribute="width" secondItem="MaW-bu-JX8" secondAttribute="height" multiplier="1:1" id="KbZ-Ge-Ww7"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="jvX-yM-Q1h"/>
                     </view>
                     <connections>

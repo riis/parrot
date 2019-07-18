@@ -19,6 +19,7 @@ class HomeViewController: UITableViewController {
     private var stateRef: Ref<DeviceState>?
     
     private var selectedUid: String?
+    private var droneState: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,9 +60,12 @@ class HomeViewController: UITableViewController {
                 self.stateRef = drone.getState { [weak self] state in
                     (self?.tableView.cellForRow(at: indexPath) as! DeviceCell).connectionState.text = state!.description
                     
-                    if (state?.connectionState.rawValue)! == 2 {
+                    // When disconnecting the drone, this code will get called twice, first saying "connected" second saying "disconnected".
+                    // We keep track of previous drone state to ensure disconnection does not push to Hud screen
+                    if (state?.connectionState.rawValue)! == 2 && self?.droneState != 2{
                             self?.navigateToHud()
                     }
+                    self?.droneState = state?.connectionState.rawValue
                 }
             }
 
