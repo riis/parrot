@@ -15,13 +15,15 @@ class HomeViewController: UITableViewController {
     private var droneListRef: Ref<[DroneListEntry]>!
     private var droneList: [DroneListEntry]?
     
-    private var drone: Drone?
+    private var drone: Drone? = nil
     private var stateRef: Ref<DeviceState>?
+    
+    private var selectedUid: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.rowHeight = 100
+        self.tableView.rowHeight = 80
         
         // This keeps our drone lists up to date in real time
         droneListRef = groundSdk.getDroneList(
@@ -51,19 +53,24 @@ class HomeViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if let droneEntry = self.droneList?[indexPath.row] {
-            
             drone = groundSdk.getDrone(uid: droneEntry.uid)
-            
+            self.selectedUid = droneEntry.uid
             if let drone = drone {
                 self.stateRef = drone.getState { [weak self] state in
                     (self?.tableView.cellForRow(at: indexPath) as! DeviceCell).connectionState.text = state!.description
+                    
+                    if (state?.connectionState.rawValue)! == 2 {
+                            self?.navigateToHud()
+                    }
                 }
             }
-            
+
             if let connectionState = stateRef?.value?.connectionState {
                 if connectionState == DeviceState.ConnectionState.disconnected {
                     if let drone = drone {
-                        connect(drone: drone, connector: drone.state.connectors[0])
+                        if drone.state.connectors.count > 0 {
+                            connect(drone: drone, connector: drone.state.connectors[0])
+                        }
                     }
                 } else {
                     _ = drone?.disconnect()
@@ -89,12 +96,23 @@ class HomeViewController: UITableViewController {
         }
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+    private func navigateToHud() {
+        if let drone = drone {
+            if drone.getPilotingItf(PilotingItfs.manualCopter) != nil {
+                performSegue(withIdentifier: "gotoHud", sender: self)
+            }
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return droneList?.count ?? 0
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let viewController = segue.destination as? HudViewController,
+            let selectedUid = selectedUid {
+            viewController.setDeviceUid(selectedUid)
+        }
     }
 }
 

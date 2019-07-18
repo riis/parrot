@@ -18,11 +18,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DroneCell" rowHeight="100" id="Lfp-NY-Fb3" customClass="DeviceCell">
-                                <rect key="frame" x="0.0" y="28" width="414" height="100"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DroneCell" rowHeight="80" id="Lfp-NY-Fb3" customClass="DeviceCell">
+                                <rect key="frame" x="0.0" y="28" width="414" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lfp-NY-Fb3" id="UAD-3I-wLS">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="99.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Model" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Qb-Yd-9mu">
@@ -52,22 +52,13 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connectors" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WqI-xO-keJ">
-                                            <rect key="frame" x="20" y="78" width="374" height="17"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="4Qb-Yd-9mu" secondAttribute="trailingMargin" id="NTf-6b-7Fo"/>
                                         <constraint firstItem="5JI-Ie-SA2" firstAttribute="trailing" secondItem="UAD-3I-wLS" secondAttribute="trailingMargin" id="PGb-4D-s8l"/>
-                                        <constraint firstItem="WqI-xO-keJ" firstAttribute="trailing" secondItem="UAD-3I-wLS" secondAttribute="trailingMargin" id="Ue2-CY-h7T"/>
                                         <constraint firstItem="SwU-vn-eCX" firstAttribute="leading" secondItem="UAD-3I-wLS" secondAttribute="leadingMargin" id="aDH-00-DzT"/>
                                         <constraint firstItem="5JI-Ie-SA2" firstAttribute="leading" secondItem="UAD-3I-wLS" secondAttribute="leadingMargin" id="blW-kN-ilu"/>
                                         <constraint firstItem="4Qb-Yd-9mu" firstAttribute="baseline" secondItem="fDR-IW-lVe" secondAttribute="baseline" id="cIX-WO-MMa"/>
-                                        <constraint firstItem="WqI-xO-keJ" firstAttribute="leading" secondItem="UAD-3I-wLS" secondAttribute="leadingMargin" id="cvI-EM-2v8"/>
-                                        <constraint firstItem="WqI-xO-keJ" firstAttribute="top" secondItem="SwU-vn-eCX" secondAttribute="bottom" constant="2" id="eZ5-yF-Hp6"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SwU-vn-eCX" secondAttribute="trailingMargin" id="g8r-Ug-IaP"/>
                                         <constraint firstItem="fDR-IW-lVe" firstAttribute="trailing" secondItem="UAD-3I-wLS" secondAttribute="trailingMargin" id="i1l-zf-oKZ"/>
                                         <constraint firstItem="4Qb-Yd-9mu" firstAttribute="leading" secondItem="UAD-3I-wLS" secondAttribute="leadingMargin" id="koz-J6-1Ok"/>
@@ -79,7 +70,6 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="connectionState" destination="fDR-IW-lVe" id="dWp-IE-wIf"/>
-                                    <outlet property="connectors" destination="WqI-xO-keJ" id="FJW-8Y-JKt"/>
                                     <outlet property="model" destination="4Qb-Yd-9mu" id="H7y-Sm-Tv5"/>
                                     <outlet property="name" destination="5JI-Ie-SA2" id="UEC-du-cii"/>
                                     <outlet property="uid" destination="SwU-vn-eCX" id="0yZ-Gh-GCf"/>
@@ -92,10 +82,21 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Select Drone" id="VJl-EM-hci"/>
+                    <connections>
+                        <segue destination="Eri-fD-eaz" kind="presentation" identifier="gotoHud" id="yQb-xq-AGj"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MG0-Ct-QYR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-123" y="139"/>
+        </scene>
+        <!--Hud-->
+        <scene sceneID="Bxf-Zf-WcO">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Hud" id="Eri-fD-eaz" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IBb-ZY-cXP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="649" y="139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6EI-bX-Iq7">

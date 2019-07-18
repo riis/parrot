@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		117140FAA610DFAEB1116501 /* Pods_ParrotDemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B46A23DAAC9C387E24E72E /* Pods_ParrotDemoUITests.framework */; };
+		1822E25222E0B16E004BCFCD /* HudViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1822E25122E0B16E004BCFCD /* HudViewController.swift */; };
+		1822E25722E0B235004BCFCD /* Hud.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1822E25622E0B235004BCFCD /* Hud.storyboard */; };
 		187EE00F22DE4701002E8550 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187EE00E22DE4701002E8550 /* AppDelegate.swift */; };
 		187EE01122DE4701002E8550 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187EE01022DE4701002E8550 /* HomeViewController.swift */; };
 		187EE01422DE4701002E8550 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 187EE01222DE4701002E8550 /* Main.storyboard */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1822E25122E0B16E004BCFCD /* HudViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HudViewController.swift; sourceTree = "<group>"; };
+		1822E25622E0B235004BCFCD /* Hud.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Hud.storyboard; sourceTree = "<group>"; };
 		187EE00B22DE4701002E8550 /* ParrotDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParrotDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		187EE00E22DE4701002E8550 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		187EE01022DE4701002E8550 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +106,34 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		1822E25322E0B192004BCFCD /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				187EE01022DE4701002E8550 /* HomeViewController.swift */,
+				1822E25122E0B16E004BCFCD /* HudViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		1822E25422E0B19B004BCFCD /* App */ = {
+			isa = PBXGroup;
+			children = (
+				187EE00E22DE4701002E8550 /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		1822E25522E0B1A2004BCFCD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				187EE01522DE4702002E8550 /* Assets.xcassets */,
+				187EE01222DE4701002E8550 /* Main.storyboard */,
+				1822E25622E0B235004BCFCD /* Hud.storyboard */,
+				187EE01722DE4702002E8550 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		187EE00222DE4701002E8550 = {
 			isa = PBXGroup;
 			children = (
@@ -127,11 +159,9 @@
 		187EE00D22DE4701002E8550 /* ParrotDemo */ = {
 			isa = PBXGroup;
 			children = (
-				187EE00E22DE4701002E8550 /* AppDelegate.swift */,
-				187EE01022DE4701002E8550 /* HomeViewController.swift */,
-				187EE01222DE4701002E8550 /* Main.storyboard */,
-				187EE01522DE4702002E8550 /* Assets.xcassets */,
-				187EE01722DE4702002E8550 /* LaunchScreen.storyboard */,
+				1822E25422E0B19B004BCFCD /* App */,
+				1822E25322E0B192004BCFCD /* ViewControllers */,
+				1822E25522E0B1A2004BCFCD /* Resources */,
 				187EE01A22DE4702002E8550 /* Info.plist */,
 			);
 			path = ParrotDemo;
@@ -275,6 +305,7 @@
 			files = (
 				187EE01922DE4702002E8550 /* LaunchScreen.storyboard in Resources */,
 				187EE01622DE4702002E8550 /* Assets.xcassets in Resources */,
+				1822E25722E0B235004BCFCD /* Hud.storyboard in Resources */,
 				187EE01422DE4701002E8550 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -388,6 +419,7 @@
 			files = (
 				187EE01122DE4701002E8550 /* HomeViewController.swift in Sources */,
 				187EE00F22DE4701002E8550 /* AppDelegate.swift in Sources */,
+				1822E25222E0B16E004BCFCD /* HudViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

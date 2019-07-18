@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="brO-bU-IcO">
+    <device id="retina6_1" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Hud View Controller-->
+        <scene sceneID="GfM-B4-abe">
+            <objects>
+                <viewController id="brO-bU-IcO" customClass="HudViewController" customModule="ParrotDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Z06-8N-NxF">
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1a3-gz-6wH">
+                                <rect key="frame" x="429.5" y="98" width="37" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="dismiss:" destination="brO-bU-IcO" eventType="touchUpInside" id="4TM-Oa-zFO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MaW-bu-JX8">
+                                <rect key="frame" x="424" y="285" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="MaW-bu-JX8" secondAttribute="height" multiplier="1:1" id="Yq3-Cb-2wZ"/>
+                                </constraints>
+                                <color key="tintColor" red="1" green="0.0" blue="0.01026766514" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <size key="titleShadowOffset" width="2.2250738585072014e-308" height="2.2250738585072014e-308"/>
+                                <state key="normal" image="ic_flight_takeoff_48pt"/>
+                                <state key="selected" image="ic_flight_takeoff_48pt"/>
+                                <state key="highlighted" image="ic_flight_takeoff_48pt"/>
+                                <connections>
+                                    <action selector="takeOffLand:" destination="brO-bU-IcO" eventType="touchUpInside" id="mFU-Fr-LpQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="MaW-bu-JX8" firstAttribute="width" secondItem="MaW-bu-JX8" secondAttribute="height" multiplier="1:1" id="KbZ-Ge-Ww7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jvX-yM-Q1h"/>
+                    </view>
+                    <connections>
+                        <outlet property="takeoffLandButton" destination="MaW-bu-JX8" id="zhO-hT-1GQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="myn-fH-FSW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-575.22321428571422" y="82.608695652173921"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ic_flight_takeoff_48pt" width="48" height="48"/>
+    </resources>
+</document>
