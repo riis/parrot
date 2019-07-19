@@ -21,6 +21,11 @@ class HomeViewController: UITableViewController {
     private var selectedUid: String?
     private var droneState: Int?
 
+    /**
+     Responds to the view loading. Gets the list of drones and saves a reference to them.
+     This sets up the closure allowing the table to update in real time to updates in
+     the set of observable drones.
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,7 +39,16 @@ class HomeViewController: UITableViewController {
         })
     }
 
-    
+    /**
+     Loads the rows of our tableview. Sets up a cell for each drone in our list. The text
+     in each cell is set up to update in real time to updates of our drones.
+     (such as connection state, etc.)
+     
+     - Parameter tableView: Reference to the tableView
+     - Parameter indexPath: The index to current cell being populated
+     
+     - Returns: The new table cell we have created
+     */
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // This function loads the table cells
         let cell = tableView.dequeueReusableCell(withIdentifier: "DroneCell", for: indexPath)
@@ -52,6 +66,17 @@ class HomeViewController: UITableViewController {
         return cell
     }
     
+    /**
+     Responds to table cells being clicked. If the drone we have selected is not connected
+     to our phone, connect to it. If the drone is connected, then disconnect. If we attempt
+     to connect and cannot, we display a message to the user that they need to be connected to
+     the drone's WiFi before connecting to the drone.
+     
+     Upon successful connection, we navigate automatically to the Hud viewcontroller.
+     
+     - Parameter tableView: Reference to the tableView
+     - Parameter indexPath: The index to selected cell
+     */
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if let droneEntry = self.droneList?[indexPath.row] {
@@ -84,6 +109,15 @@ class HomeViewController: UITableViewController {
         }
     }
     
+    /**
+     Performs the process of connecting to the drone via the specified device connector.
+     In this app, we only connect to the drone using nothing but our cell phone. Other
+     connectors could allow phone plugged into the drone controller etc. If the drone
+     requires a password, we ask for it. Otherwise, simply connect.
+     
+     - Parameter drone: The drone we want to connect to
+     - Parameter connector: The way we would like to connect to drone.
+     */
     private func connect(drone: Drone, connector: DeviceConnector) {
         if drone.state.connectionStateCause == .badPassword {
             // ask for password
@@ -101,6 +135,10 @@ class HomeViewController: UITableViewController {
         }
     }
     
+    /**
+     Segues to the Hud viewController. This is conditioned on the drone
+     being connected.
+     */
     private func navigateToHud() {
         if let drone = drone {
             if drone.getPilotingItf(PilotingItfs.manualCopter) != nil {
@@ -109,10 +147,26 @@ class HomeViewController: UITableViewController {
         }
     }
     
+    /**
+     Returns the number of rows in the tableview, the count is equal to the amount of
+     drones we have in our list.
+     
+     - Parameter tableView: The table in our viewcontroller
+     - Parameter section: the section we are populating (in our case, we only have one)
+     
+     - Returns: Num of rows in tableview
+     */
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return droneList?.count ?? 0
     }
     
+    /**
+     Responds to the segue to another ViewController. We pass the drone
+     Uid to the Hud here.
+     
+     - Parameter segue: The segue in progress.
+     - Parameter sender: The caller of this function.
+     */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewController = segue.destination as? HudViewController,
             let selectedUid = selectedUid {
@@ -121,7 +175,9 @@ class HomeViewController: UITableViewController {
     }
 }
 
-
+/**
+ This is the class representing the table cells in our drone list
+ */
 @objc(DeviceCell)
 private class DeviceCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
