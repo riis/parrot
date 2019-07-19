@@ -100,6 +100,11 @@ class HomeViewController: UITableViewController {
                     if let drone = drone {
                         if drone.state.connectors.count > 0 {
                             connect(drone: drone, connector: drone.state.connectors[0])
+                        } else {
+                            // No way of connecting to drone
+                            let alert = UIAlertController(title: "No means of connection", message: "To connect to your drone, remember to connect to the Anafi WiFi signal first.", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+                            self.present(alert, animated: true)
                         }
                     }
                 } else {
