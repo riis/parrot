@@ -59,6 +59,12 @@ class HudViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    private func initDroneRefs(_ drone: Drone) {
+        pilotingItf = drone.getPilotingItf(PilotingItfs.manualCopter) { [unowned self] pilotingItf in
+            self.updateTakeoffLandButton(pilotingItf)
+        }
+    }
+    
     @IBAction func takeOffLand(_ sender: Any) {
         if let pilotingItf = pilotingItf?.value {
             pilotingItf.smartTakeOffLand()
@@ -86,9 +92,17 @@ class HudViewController: UIViewController {
         }
     }
     
-    private func initDroneRefs(_ drone: Drone) {
-        pilotingItf = drone.getPilotingItf(PilotingItfs.manualCopter) { [unowned self] pilotingItf in
-            self.updateTakeoffLandButton(pilotingItf)
+    @IBAction func leftJoystickUpdate(_ sender: JoystickView) {
+        if let pilotingItf = pilotingItf?.value, pilotingItf.state == .active {
+            pilotingItf.set(pitch: -sender.value.y)
+            pilotingItf.set(roll: sender.value.x)
         }
+    }
+    
+    @IBAction func rightJoystickUpdate(_ sender: JoystickView) {
+        if let pilotingItf = pilotingItf?.value, pilotingItf.state == .active {
+            pilotingItf.set(verticalSpeed: sender.value.y)
+            pilotingItf.set(yawRotationSpeed: sender.value.x)
+        } 
     }
 }
