@@ -36,6 +36,7 @@ class HomeViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // This function loads the table cells
         let cell = tableView.dequeueReusableCell(withIdentifier: "DroneCell", for: indexPath)
         if let cell = cell as? DeviceCell {
             if let droneEntry =  self.droneList?[indexPath.row] {

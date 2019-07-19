@@ -59,12 +59,6 @@ class HudViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    
-    
-    
-    
-    
-    
     @IBAction func takeOffLand(_ sender: Any) {
         if let pilotingItf = pilotingItf?.value {
             pilotingItf.smartTakeOffLand()
@@ -93,16 +87,8 @@ class HudViewController: UIViewController {
     }
     
     private func initDroneRefs(_ drone: Drone) {
-//        flyingIndicators = drone.getInstrument(Instruments.flyingIndicators) { [unowned self] flyingIndicators in
-//            self.updateFlyingIndicatorLabel(flyingIndicators)
-//        }
-        
         pilotingItf = drone.getPilotingItf(PilotingItfs.manualCopter) { [unowned self] pilotingItf in
             self.updateTakeoffLandButton(pilotingItf)
-//            if let pilotingItf = pilotingItf {
-//                self.verticalSpeedView.set(maxValue: Double(pilotingItf.maxVerticalSpeed.value))
-//                self.verticalSpeedView.set(minValue: Double(-pilotingItf.maxVerticalSpeed.value))
-//            }
         }
     }
 }

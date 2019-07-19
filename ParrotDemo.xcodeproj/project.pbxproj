@@ -134,6 +134,13 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		1822E25822E1FE41004BCFCD /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		187EE00222DE4701002E8550 = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +166,7 @@
 		187EE00D22DE4701002E8550 /* ParrotDemo */ = {
 			isa = PBXGroup;
 			children = (
+				1822E25822E1FE41004BCFCD /* New Group */,
 				1822E25422E0B19B004BCFCD /* App */,
 				1822E25322E0B192004BCFCD /* ViewControllers */,
 				1822E25522E0B1A2004BCFCD /* Resources */,
