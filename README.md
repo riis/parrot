@@ -8,8 +8,9 @@ This app is meant to be a simpler entry point to the iOS version of Parrot's Gro
 
 ## Setup
 
-Open up Terminal, cd into your top-level project directory, and run the following command
+Open up Terminal, cd into your top-level project directory, and run the following commands
 
 ```
+pod repo update
 pod install
 ```
