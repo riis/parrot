@@ -1,6 +1,12 @@
 # Parrot SDK Demo
 This app is meant to be a simpler entry point to the iOS version of Parrot's GroundSDK
 
+## Features
+* Connect to drone
+* Take off
+* Manual flight with joysticks
+* Land
+
 ## Requirements
 
 * Xcode 10.2+
