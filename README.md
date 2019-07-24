@@ -20,3 +20,5 @@ Open up Terminal, cd into your top-level project directory, and run the followin
 pod repo update
 pod install
 ```
+
+Once the pods have been installed, you can open the .xcworkspace file and start coding!
